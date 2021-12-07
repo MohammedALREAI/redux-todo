@@ -1,12 +1,13 @@
 import { ListEnum } from './list.consant.enum'
 import { ItemList, ListAction } from './type.d'
 
+export interface ILists {
+    isLoading: boolean;
+    error: string;
+    lists: Array<ItemList>;
+}
 interface IListItem {
-    lists: {
-        isLoading: boolean;
-        error: string;
-        lists: Array<ItemList>;
-    };
+    lists: ILists;
     list: {
         isLoading: boolean;
         error: string;
@@ -57,47 +58,37 @@ export const ListReducer = (
                 },
             }
 
+        /****
+         * dealte  item
+         *
+         *
+         */
 
-
-/****
- * dealte  item
- *
- *
- */
-
- case ListEnum.DELETE_LIST_FROM_START:
-    return {
-        ...initialState,
-        lists: {
-            ...initialState.lists,
-            isLoading: true,
-        },
-    }
-case ListEnum.DELETE_LIST_FROM_SUCCESS:
-    return {
-        ...initialState,
-        lists: {
-            ...initialState.lists,
-            isLoading: false,
-            lists: action.payload.lists,
-        },
-    }
-case ListEnum.DELETE_LIST_FROM_FIELD:
-    return {
-        ...initialState,
-        lists: {
-            ...initialState.lists,
-            error: action.payload.error,
-        },
-    }
-
-
-
-
-
-
-
-
+        case ListEnum.DELETE_LIST_FROM_START:
+            return {
+                ...initialState,
+                lists: {
+                    ...initialState.lists,
+                    isLoading: true,
+                },
+            }
+        case ListEnum.DELETE_LIST_FROM_SUCCESS:
+            return {
+                ...initialState,
+                lists: {
+                    ...initialState.lists,
+                    isLoading: false,
+                    lists: action.payload.lists,
+                },
+            }
+        case ListEnum.DELETE_LIST_FROM_FIELD:
+            return {
+                ...initialState,
+                lists: {
+                    ...initialState.lists,
+                    error: action.payload.error,
+                },
+            }
 
         /***   start Get  all  items   item  list   */
 

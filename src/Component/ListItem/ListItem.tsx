@@ -10,8 +10,10 @@ export interface IPropsListItem {
 
 export const ListItem = (props: IPropsListItem) => {
     return (
-        <section className="list-item" >
-            <span className="task-title">{props.todo}</span>
+        <section className="list-item">
+            <span className="task-title" onClick={props.goRoute}>
+                {props.todo}
+            </span>
             <Button text="remove" onClick={props.handleDeleteAction} />
         </section>
     )
